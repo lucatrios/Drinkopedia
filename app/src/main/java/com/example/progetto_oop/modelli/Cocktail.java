@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Cocktail implements Serializable, Comparable<Cocktail> {
     /**
-     * id del drink da bere ciao un
+     * id del drink
      */
 
     public final int id;
