@@ -14,7 +14,7 @@
     <string name="el010">Aperol Spritz</string>
     <string name="el011">Whiskey Sour</string>
     <string name="el012">Zombie</string>
-    <string name="el013">Mimosa</string>
+    <string name="el013">Mimosa cocktail</string>
     <string name="el014">Bellini cocktail</string>
     <string name="el015">Gin tonic</string>
     <string name="el016">Gin lemon</string>
@@ -22,7 +22,7 @@
     <string name="el018">Gin fizz</string>
     <string name="el019">Long island iced tea</string>
     <string name="el020">Manhattan</string>
-    <string name="el021">Espresso martini</string>
+    <string name="el021">Espresso Martini</string>
     <string name="el022">Tequila sunrise</string>
     <string name="el023">Vesper Martini</string>
     <string name="el024">Moscow Mule</string>
@@ -34,7 +34,7 @@
     <string name="el030">Penicillin</string>
     <string name="el031">Boulevardier</string>
     <string name="el032">Acapulco</string>
-    <string name="el033">Malibù cocktail</string>
+    <string name="el033">Malibu cocktail</string>
     <string name="el034">Dark\'n\' Stormy</string>
     <string name="el035">Clover club</string>
     <string name="el036">Piña colada</string>
@@ -45,23 +45,23 @@
     <string name="el041">Cuba Libre</string>
     <string name="el042">Sex on the beach</string>
     <!-- Analcolici -->
-    <string name="el043">Apple Killer</string>
-    <string name="el044">Coco mint</string>
-    <string name="el045">Yogi</string>
-    <string name="el046">Strawberry lemon</string>
-    <string name="el047">Pineapple red</string>
-    <string name="el048">Red sour</string>
-    <string name="el049">Fruit smoothie</string>
+    <string name="el043">Apple killer</string>
+    <string name="el044">Green light</string>
+    <string name="el045">Sangria analcolica</string>
+    <string name="el046">Raspberry lemonade</string>
+    <string name="el047">Red coconut</string>
+    <string name="el048">Cool passion</string>
+    <string name="el049">Shirley temple</string>
     <string name="el050">Virgin Mojito</string>
     <string name="el051">Virgin Colada</string>
-    <string name="el052">Virgin Moscow Mule</string>
+    <string name="el052">Virgin Moscow mule</string>
     <string name="el053">Virgin Royal Hawaiian</string>
     <string name="el054">San Francisco</string>
     <string name="el055">Red Sunset</string>
     <string name="el056">Rose lemon spritzer</string>
-    <string name="el057">Lemon virgin Margarita</string>
+    <string name="el057">Virgin Margarita</string>
     <string name="el058">Tropical</string>
-    <string name="el059">Switchel</string>
+    <string name="el059">Fruit punch</string>
     <string name="el060">Lemonade fruit</string>
     <string name="el061">All shook up</string>
 

@@ -4,37 +4,37 @@ import java.io.Serializable;
 
 public class Cocktail implements Serializable, Comparable<Cocktail> {
     /**
-     * id del drink
+     * cocktail's id
      */
 
     public final int id;
 
     /**
-     * Nome del drink
+     * cocktail's name
      */
 
     public final String nome;
 
     /**
-     * costo del drink
+     * cocktail's cost
      */
 
     public final String cost;
 
     /**
-     * ingredienti
+     * ingredients
      */
 
     public final String ingredients;
 
     /**
-     * difficoltà
+     * difficulty
      */
 
     public final String difficulty;
 
     /**
-     * tempo
+     * time
      */
     public final String time;
 
@@ -57,7 +57,7 @@ public class Cocktail implements Serializable, Comparable<Cocktail> {
     public Boolean salvata;
 
     Cocktail(int id, String nome, String cost, String ingredients, String difficulty, String time,
-            String category, String preparation, Boolean salvata) {
+             String category, String preparation, Boolean salvata) {
         this.id=id;
         this.nome=nome;
         this.cost=cost;
