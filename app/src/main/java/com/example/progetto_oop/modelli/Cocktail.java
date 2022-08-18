@@ -16,12 +16,6 @@ public class Cocktail implements Serializable, Comparable<Cocktail> {
     public final String nome;
 
     /**
-     * cocktail's cost
-     */
-
-    public final String cost;
-
-    /**
      * ingredients
      */
 
@@ -56,23 +50,22 @@ public class Cocktail implements Serializable, Comparable<Cocktail> {
 
     public Boolean salvata;
 
-    Cocktail(int id, String nome, String cost, String ingredients, String difficulty, String time,
+    Cocktail(int id, String nome, String ingredients, String difficulty, String time,
              String category, String preparation, Boolean salvata) {
-        this.id=id;
-        this.nome=nome;
-        this.cost=cost;
+        this.id = id;
+        this.nome = nome;
         this.ingredients = ingredients;
         this.difficulty = difficulty;
         this.time = time;
         this.category = category;
-        this.preparation=preparation;
-        this.salvata=salvata;
+        this.preparation = preparation;
+        this.salvata = salvata;
 
     }
 
     @Override
     public int compareTo(Cocktail cocktail) {
-        if(this.id==cocktail.id)
+        if (this.id == cocktail.id)
             return 1;
         else
             return 0;
