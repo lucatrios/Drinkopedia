@@ -34,22 +34,18 @@ public class ListaElementiFragment extends Fragment {
 
     private RecyclerView lista_elementi;
     private Button ordina_simbolo;
-    private Button ordina_blocco;
     private Button ordina_numero;
     private Button preferiti;
     private TextInputEditText input_cerca;
     private FragmentActivity view;
     private GestoreListaElementi gestoreLista;
     private boolean reverse_simbolo = false;
-    private boolean reverse_blocco = false;
     private boolean reverse_numero = false;
-    private boolean primi=false;
-    private boolean secondi=false;
-    private boolean dolci=false;
+    private boolean Alcolici=false;
+    private boolean Analcolici=false;
     private boolean salvati=false;
-    private boolean ordina_primo=false;
-    private boolean ordina_secondi=false;
-    private boolean ordina_dolci=false;
+    private boolean ordina_Alcolici=false;
+    private boolean ordina_Analcolici=false;
 
     private ConnectionDB db;
 
@@ -68,7 +64,6 @@ public class ListaElementiFragment extends Fragment {
         lista_elementi.setHasFixedSize(true);
         lista_elementi.setLayoutManager(new LinearLayoutManager(view.getContext()));
         ordina_simbolo = view.findViewById(R.id.ordina_simbolo);
-        ordina_blocco = view.findViewById(R.id.ordina_blocco);
         ordina_numero = view.findViewById(R.id.ordina_numero);
         input_cerca = view.findViewById(R.id.input_cerca);
         preferiti=view.findViewById(R.id.Preferiti);
@@ -91,31 +86,24 @@ public class ListaElementiFragment extends Fragment {
 
 
 
-                if(primi){
-                    gestoreLista.setOrdina_primo(true); // se sono nel bottone dei primi setta la variabile che dice di ordinare i primi
+                if(Alcolici){
+                    gestoreLista.setOrdina_Alcolico(true); // se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli alcolici
                 }
                 else{
-                    gestoreLista.setOrdina_primo(false);//se sono in un altro bottone non ordinare i primi
+                    gestoreLista.setOrdina_Alcolico(false);//se sono in un altro bottone non ordinare gli alcolici
                 }
 
-                if(secondi){
-                    gestoreLista.setOrdina_secondi(true);// se sono nel bottone dei primi setta la variabile che dice di ordinare i secondi
+                if(Analcolici){
+                    gestoreLista.setOrdina_Analcolico(true);// se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli analcolici
                 }
                 else{
-                    gestoreLista.setOrdina_secondi(false);//se sono in un altro bottone non ordinare i secondi
-                }
-
-                if(dolci){
-                    gestoreLista.setOrdina_dolci(true);// se sono nel bottone dei primi setta la variabile che dice di ordinare i dolci
-                }
-                else{
-                    gestoreLista.setOrdina_dolci(false);//se sono in un altro bottone non ordinare i dolci
+                    gestoreLista.setOrdina_Analcolico(false);//se sono in un altro bottone non ordinare gli analcolici
                 }
                 if(salvati){
-                    gestoreLista.setOrdina_preferiti(true);
+                    gestoreLista.setOrdina_Preferiti(true);
                 }
                 else{
-                    gestoreLista.setOrdina_preferiti(false);
+                    gestoreLista.setOrdina_Preferiti(false);
                 }
 
 
@@ -130,7 +118,7 @@ public class ListaElementiFragment extends Fragment {
         });
 
         /*
-        Bottone per visualizzare i primi che si occupa anche di cambiare i testi dinamicamente di se
+        Bottone per visualizzare gli alcolici che si occupa anche di cambiare i testi dinamicamente di se
         e degli altri bottoni
          */
 
@@ -140,31 +128,25 @@ public class ListaElementiFragment extends Fragment {
 
                 gestoreLista = new GestoreListaElementi(activity, input_cerca.getText().toString());
 
-                gestoreLista.setPrimi(!primi);
+                gestoreLista.setAlcolici(!Alcolici);
 
                 lista_elementi.setAdapter(gestoreLista);
 
-
-
-
-
-                if(primi)
-                    ordina_numero.setText("Primi");
+                if(Alcolici)
+                    ordina_numero.setText("Alcolici");
                 else {
                     preferiti.setText("Preferiti");
                     ordina_numero.setText("Menu");
-                    ordina_simbolo.setText("secondi");
-                    ordina_blocco.setText("dolci ");
-                    secondi=false;
-                    dolci=false;
+                    ordina_simbolo.setText("Analcolici");
+                    Analcolici=false;
                     salvati=false;
 
                 }
-                primi=!primi;
+                Alcolici=!Alcolici;
             }
         });
         /*
-        Bottone per visualizzare i secondi che si occupa anche di cambiare i testi dinamicamente di se
+        Bottone per visualizzare gli analcolici che si occupa anche di cambiare i testi dinamicamente di se
         e degli altri bottoni
          */
         ordina_simbolo.setOnClickListener(new View.OnClickListener() {
@@ -172,52 +154,22 @@ public class ListaElementiFragment extends Fragment {
             public void onClick(View view) {
 
                 gestoreLista = new GestoreListaElementi(activity, input_cerca.getText().toString());
-                gestoreLista.setSecondi(!secondi);
+                gestoreLista.setAnalcolici(!Analcolici);
 
                 lista_elementi.setAdapter(gestoreLista);
 
 
-                if(secondi)
-                    ordina_simbolo.setText("secondi");
+                if(Analcolici)
+                    ordina_simbolo.setText("Analcolici");
                 else {
                     preferiti.setText("Preferiti");
-                    ordina_simbolo.setText("menu");
-                    ordina_blocco.setText("dolci");
-                    ordina_numero.setText("primi");
-                    primi=false;
-                    dolci=false;
+                    ordina_simbolo.setText("Menu");
+                    ordina_numero.setText("Alcolici");
+                    Alcolici=false;
                     salvati=false;
                 }
-                secondi=!secondi;
+                Analcolici=!Analcolici;
             }
-        });
-        /*
-        Bottone per visualizzare i dolci che si occupa anche di cambiare i testi dinamicamente di se
-        e degli altri bottoni
-         */
-        ordina_blocco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                gestoreLista = new GestoreListaElementi(activity, input_cerca.getText().toString());
-                lista_elementi.setAdapter(gestoreLista);
-                gestoreLista.setDolci(!dolci);
-
-
-                if(dolci)
-                    ordina_blocco.setText("dolci ");
-                else {
-                    preferiti.setText("Preferiti");
-                    ordina_blocco.setText("menu");
-                    ordina_simbolo.setText("secondi");
-                    ordina_numero.setText("primi");
-                    primi=false;
-                    secondi=false;
-                    salvati=false;
-                }
-                dolci=!dolci;
-            }
-
         });
 
         preferiti.setOnClickListener(new View.OnClickListener() {
@@ -235,28 +187,20 @@ public class ListaElementiFragment extends Fragment {
                     preferiti.setText("Preferiti");
                 else {
                     preferiti.setText("Menù");
-                    ordina_blocco.setText("dolci");
-                    ordina_simbolo.setText("secondi");
-                    ordina_numero.setText("primi");
-                    primi=false;
-                    secondi=false;
-                    dolci=false;
+                    ordina_simbolo.setText("Analcolici");
+                    ordina_numero.setText("Alcolici");
+                    Alcolici=false;
+                    Analcolici=false;
                 }
                 salvati = !salvati;
-
-
             }
 
-
         });
-
-
 
         gestoreLista = new GestoreListaElementi(activity, "");
         lista_elementi.setAdapter(gestoreLista);
 
         return view;
-
 
     }
 
