@@ -92,7 +92,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             if ((Analcolici || ordina_Analcolici) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
-                position = 15 + position;
+                position = 42 + position;
                 Cocktail elemento = Menu.getCocktail(position + 1);
                 buildItem(holder, elemento);
 
@@ -112,7 +112,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
             Cocktail elemento = Menu.getCocktail(position);
             buildItem(holder, elemento);
         } else {
-            if (ordina_Analcolici) {
+            if (ordina_Alcolici) {
                 int count = 0;
                 for (Cocktail e : Menu.getListaAlcolici()) {
                     String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
@@ -159,7 +159,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             }
 
-            if (!ordina_Analcolici && !ordina_Analcolici && !ordina_Preferiti) {
+            if (!ordina_Alcolici && !ordina_Analcolici && !ordina_Preferiti) {
                 int count = 0;
                 for (Cocktail e : Menu.getCocktail()) {
                     String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
@@ -203,10 +203,10 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
         if (this.filtro_ricerca.isEmpty()) {
             if (Alcolici || ordina_Alcolici) {
-                return 15;
+                return 42;
             }
             if (Analcolici || ordina_Analcolici) {
-                return 10;
+                return 19;
             }
             if (Preferiti || ordina_Preferiti) {
                 return db.getNumeroCocktailSalvati();
