@@ -28,7 +28,7 @@ public class Cocktail implements Serializable, Comparable<Cocktail> {
     public final String difficulty;
 
     /**
-     * time
+     * the time
      */
     public final String time;
 
