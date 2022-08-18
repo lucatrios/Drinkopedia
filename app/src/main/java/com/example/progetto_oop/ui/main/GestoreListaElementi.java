@@ -5,27 +5,17 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.ImageButton;
-import android.content.Context;
-
-
-
-import com.example.progetto_oop.R;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.progetto_oop.modelli.Menu;
+import com.example.progetto_oop.R;
 import com.example.progetto_oop.modelli.Cocktail;
-
-
-import com.example.progetto_oop.ui.ingredienti.;
+import com.example.progetto_oop.modelli.Menu;
 
 
 public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaElementi.GestoreElemento> {
@@ -96,50 +86,42 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             if ((Alcolici || ordina_Alcolico) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
-                Ricetta element = Ricettario.getRicetta(position + 1);
+                Cocktail element = Menu.getCocktail(position + 1);
                 buildItem(holder, element);
 
             }
 
-            if ((secondi || ordina_secondi) && position >= 0 && position <= Ricettario.getNumeroRicette()) {
+            if ((Analcolici || ordina_Analcolico) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
                 position = 15 + position;
-                Ricetta elemento = Ricettario.getRicetta(position + 1);
+                Cocktail elemento = Menu.getCocktail(position + 1);
                 buildItem(holder, elemento);
 
 
             }
-            if ((dolci || ordina_dolci) && position >= 0 && position <= Ricettario.getNumeroRicette()) {
+        }
+        if ((Preferiti || ordina_Preferiti) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
-                position = 25 + position;
-                Ricetta elemento = Ricettario.getRicetta(position + 1);
-                buildItem(holder, elemento);
+            Cocktail elemento = Menu.getCocktailById(db.getCocktailSalvati()[position]);
+            buildItem(holder, elemento);
 
-
-            }
-            if ((preferiti || ordina_preferiti) && position >= 0 && position <= Ricettario.getNumeroRicette()) {
-
-                Ricetta elemento = Ricettario.getRicettaById(db.getRicetteSalvate()[position]);
-                buildItem(holder, elemento);
-
-            }
+        }
 
 
-            if (!primi && !secondi && !dolci && !preferiti && !ordina_preferiti && position >= 0 && position <= Ricettario.getNumeroRicette()) {
-                position++;
-                Ricetta elemento = Ricettario.getRicetta(position);
-                buildItem(holder, elemento);
-            }
+        if (!Alcolici && !Analcolici && !Preferiti && !ordina_Preferiti && position >= 0 && position <= Menu.getNumeroCocktail()) {
+            position++;
+            Cocktail elemento = Menu.getCocktail(position);
+            buildItem(holder, elemento);
         } else {
             //System.out.println("ordina_primi= "+ ordina_primo);
-            if (ordina_primo) {
+            if (ordina_Alcolico) {
                 int count = 0;
-                for (Ricetta e : Ricettario.getListaPrimi()) {
-                    String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+                for (Cocktail e : Menu.getListaAlcolici()) {
+                    String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
 
                     if (nome.contains(this.filtro_ricerca)) {
                         if (count == position) {
-                            Ricetta el = Ricettario.getRicetta(e.id);
+                            Cocktail el = Menu.getCocktail(e.id);
                             buildItem(holder, el);
                         }
 
@@ -148,44 +130,30 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
                 }
             }
             //System.out.println("ordina_secondi= "+ordina_secondi);
-            if (ordina_secondi) {
+            if (ordina_Analcolico) {
                 int count = 0;
-                for (Ricetta e : Ricettario.getListaSecondi()) {
+                for (Cocktail e : Menu.getListaAnalcolici()) {
 
-                    String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+                    String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
                     //System.out.println("posizione elemento:"+(e.id)+"  elemento="+nome);
                     //System.out.println("Il filtro contiene:"+ filtro_ricerca);
                     if (nome.contains(this.filtro_ricerca)) {
                         if (count == position) {
-                            Ricetta el = Ricettario.getRicetta(e.id);
+                            Cocktail el = Menu.getCocktail(e.id);
                             buildItem(holder, el);
                         }
                         count++;
                     }
                 }
             }
-            //System.out.println("ordina_dolci= "+ordina_dolci);
-            if (ordina_dolci) {
+
+            if (ordina_Preferiti) {
                 int count = 0;
-                for (Ricetta e : Ricettario.getListaDolci()) {
-                    String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+                for (int i = 0; i < db.getNumeroCocktailSalvati(); i++) {
+                    String nome = parent.getString(Menu.getCocktailName(db.getCocktailSalvati()[i])).toLowerCase();
                     if (nome.contains(this.filtro_ricerca)) {
                         if (count == position) {
-                            Ricetta el = Ricettario.getRicetta(e.id);
-                            buildItem(holder, el);
-                        }
-                        count++;
-                    }
-                }
-            }
-
-            if (ordina_preferiti) {
-                int count = 0;
-                for (int i = 0; i < db.getNumeroElementiSalvati(); i++) {
-                    String nome = parent.getString(Ricettario.getRicettaName(db.getRicetteSalvate()[i])).toLowerCase();
-                    if (nome.contains(this.filtro_ricerca)) {
-                        if (count == position) {
-                            Ricetta el = Ricettario.getRicettaById(db.getRicetteSalvate()[i]);
+                            Cocktail el = Menu.getCocktailById(db.getCocktailSalvati()[i]);
                             buildItem(holder, el);
                         }
                         count++;
@@ -194,10 +162,10 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             }
 
-            if (!ordina_primo && !ordina_secondi && !ordina_dolci && !ordina_preferiti) {
+            if (!ordina_Alcolico && !ordina_Analcolico && !ordina_Preferiti) {
                 int count = 0;
-                for (Ricetta e : Ricettario.getRicette()) {
-                    String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+                for (Cocktail e : Menu.getCocktail()) {
+                    String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
                     if (nome.contains(this.filtro_ricerca)) {
                         if (count == position)
                             buildItem(holder, e);
@@ -208,15 +176,15 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         }
     }
 
-    private void buildItem(@NonNull GestoreElemento holder, Ricetta elemento) {
+    private void buildItem(@NonNull GestoreElemento holder, Cocktail elemento) {
 
         System.out.println("HO L'ELEMENTO:" + elemento.nome);
 
-        holder.nome_elemento.setText(Ricettario.getRicettaName(elemento.id));
+        holder.nome_elemento.setText(Menu.getCocktailName(elemento.id));
         if (elemento != null) {
 
 
-            holder.img_elemento.setImageResource(Ricettario.getImagePlate(elemento));
+            holder.img_elemento.setImageResource(Menu.getImageCocktail(elemento));
             holder.riga_elemento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -237,57 +205,44 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
 
         if (this.filtro_ricerca.isEmpty()) {
-            if (primi || ordina_primo) {
+            if (Alcolici || ordina_Alcolico) {
                 return 15;
             }
-            if (secondi || ordina_secondi) {
+            if (Analcolici || ordina_Analcolico) {
                 return 10;
             }
-            if (dolci || ordina_dolci) {
-                return 15;
-            }
-            if (preferiti || ordina_preferiti) {
-                return db.getNumeroElementiSalvati();
+            if (Preferiti || ordina_Preferiti) {
+                return db.getNumeroCocktailSalvati();
             }
 
-            return Ricettario.getNumeroRicette();
+            return Menu.getNumeroCocktail();
         }
         //se stiamo cercando una ricetta
 
 
-        if (primi) {
-            ordina_primo = true;
-            ordina_secondi = false;
-            ordina_dolci = false;
-            ordina_preferiti = false;
+        if (Alcolici) {
+            ordina_Alcolico = true;
+            ordina_Analcolico = false;
+            ordina_Preferiti = false;
         }
 
-        if (secondi) {
-            ordina_primo = false;
-            ordina_secondi = true;
-            ordina_dolci = false;
-            ordina_preferiti = false;
+        if (Analcolici) {
+            ordina_Alcolico = false;
+            ordina_Analcolico = true;
+            ordina_Preferiti = false;
         }
-        if (dolci) {
-            ordina_primo = false;
-            ordina_secondi = false;
-            ordina_dolci = true;
-            ordina_preferiti = false;
-
-        }
-        if (preferiti) {
-            ordina_primo = false;
-            ordina_secondi = false;
-            ordina_dolci = false;
-            ordina_preferiti = true;
+        if (Preferiti) {
+            ordina_Alcolico = false;
+            ordina_Analcolico = false;
+            ordina_Preferiti = true;
 
         }
 
 
-        if (ordina_primo) {
+        if (ordina_Alcolico) {
             int count = 0;
-            for (Ricetta e : Ricettario.getListaPrimi()) {
-                String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+            for (Cocktail e : Menu.getListaAlcolici()) {
+                String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
                 if (nome.contains(this.filtro_ricerca)) {
 
                     count++;
@@ -296,31 +251,20 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             return count;
         }
-        if (ordina_secondi) {
+        if (ordina_Analcolico) {
             int count = 0;
-            for (Ricetta e : Ricettario.getListaSecondi()) {
-                String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+            for (Cocktail e : Menu.getListaAnalcolici()) {
+                String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
                 if (nome.contains(this.filtro_ricerca)) {
                     count++;
                 }
             }
             return count;
         }
-        if (ordina_dolci) {
+        if (ordina_Preferiti) {
             int count = 0;
-            for (Ricetta e : Ricettario.getListaDolci()) {
-                String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
-                if (nome.contains(this.filtro_ricerca)) {
-                    count++;
-                }
-            }
-            return count;
-        }
-
-        if (ordina_preferiti) {
-            int count = 0;
-            for (int i = 0; i < db.getNumeroElementiSalvati(); i++) {
-                String nome = parent.getString(Ricettario.getRicettaName(db.getRicetteSalvate()[i])).toLowerCase();
+            for (int i = 0; i < db.getNumeroCocktailSalvati(); i++) {
+                String nome = parent.getString(Menu.getCocktailName(db.getCocktailSalvati()[i])).toLowerCase();
                 if (nome.contains(this.filtro_ricerca)) {
                     count++;
                 }
@@ -329,8 +273,8 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         }
 
         int count = 0;
-        for (Ricetta e : Ricettario.getRicette()) {
-            String nome = parent.getString(Ricettario.getRicettaName(e.id)).toLowerCase();
+        for (Cocktail e : Menu.getCocktail()) {
+            String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
             if (nome.contains(this.filtro_ricerca)) {
                 count++;
             }
@@ -349,9 +293,9 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         public GestoreElemento(@NonNull View view) {
             super(view);
 
-            nome_elemento = view.findViewById(R.id.nome_ricetta);
-            riga_elemento = view.findViewById(R.id.riga_elemento);
-            img_elemento = view.findViewById(R.id.immagine_piatto);
+            nome_elemento = view.findViewById(R.id.nome_Cocktail);
+            riga_elemento = view.findViewById(R.id.riga_Cocktail);
+            img_elemento = view.findViewById(R.id.immagine_Cocktail);
 
 
 
