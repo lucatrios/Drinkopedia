@@ -87,17 +87,17 @@ public class ListaElementiFragment extends Fragment {
 
 
                 if(Alcolici){
-                    gestoreLista.setOrdina_Alcolico(true); // se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli alcolici
+                    gestoreLista.setOrdina_Alcolici(true); // se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli alcolici
                 }
                 else{
-                    gestoreLista.setOrdina_Alcolico(false);//se sono in un altro bottone non ordinare gli alcolici
+                    gestoreLista.setOrdina_Alcolici(false);//se sono in un altro bottone non ordinare gli alcolici
                 }
 
                 if(Analcolici){
-                    gestoreLista.setOrdina_Analcolico(true);// se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli analcolici
+                    gestoreLista.setOrdina_Analcolici(true);// se sono nel bottone degli alcolici setta la variabile che dice di ordinare gli analcolici
                 }
                 else{
-                    gestoreLista.setOrdina_Analcolico(false);//se sono in un altro bottone non ordinare gli analcolici
+                    gestoreLista.setOrdina_Analcolici(false);//se sono in un altro bottone non ordinare gli analcolici
                 }
                 if(salvati){
                     gestoreLista.setOrdina_Preferiti(true);
@@ -203,5 +203,4 @@ public class ListaElementiFragment extends Fragment {
         return view;
 
     }
-
 }

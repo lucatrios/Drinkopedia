@@ -48,12 +48,12 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         this.Preferiti = Preferiti;
     }
 
-    public void setOrdina_Alcolico(boolean ordina_Alcolico) {
-        this.ordina_Alcolici = ordina_Alcolico;
+    public void setOrdina_Alcolici(boolean ordina_Alcolici) {
+        this.ordina_Alcolici = ordina_Alcolici;
     }
 
-    public void setOrdina_Analcolico(boolean ordina_Analcolico) {
-        this.ordina_Analcolici = ordina_Analcolico;
+    public void setOrdina_Analcolici(boolean ordina_Analcolici) {
+        this.ordina_Analcolici = ordina_Analcolici;
     }
 
     public void setOrdina_Preferiti(boolean ordina_Preferiti) {
@@ -83,8 +83,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
     public void onBindViewHolder(@NonNull GestoreElemento holder, int position) {
         Activity parent = this.parent;
         if (filtro_ricerca.isEmpty()) {
-
-            if ((Alcolici || ordina_Analcolici) && position >= 0 && position <= Menu.getNumeroCocktail()) {
+            if ((Alcolici || ordina_Alcolici) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
                 Cocktail element = Menu.getCocktail(position + 1);
                 buildItem(holder, element);
@@ -113,7 +112,6 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
             Cocktail elemento = Menu.getCocktail(position);
             buildItem(holder, elemento);
         } else {
-            //System.out.println("ordina_primi= "+ ordina_primo);
             if (ordina_Analcolici) {
                 int count = 0;
                 for (Cocktail e : Menu.getListaAlcolici()) {
