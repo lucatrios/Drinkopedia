@@ -94,7 +94,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         Activity parent = this.parent;
         if (filtro_ricerca.isEmpty()) {
 
-            if ((Alcolici || ordina_Alcolico) && position >= 0 && position <= Menu.getNumeroRicette()) {
+            if ((Alcolici || ordina_Alcolico) && position >= 0 && position <= Menu.getNumeroCocktail()) {
 
                 Ricetta element = Ricettario.getRicetta(position + 1);
                 buildItem(holder, element);
