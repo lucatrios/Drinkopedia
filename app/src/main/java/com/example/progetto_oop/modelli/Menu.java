@@ -977,5 +977,107 @@ public class Menu {
                 ),
 
         };
+        @NonNull
+        private final static HashMap<String, Integer> COLOR_MAP = new HashMap<>();
+
+        public static void setup(@NonNull Context context) {
+                final Resources res = context.getResources();
+
+                String[] keys = res.getStringArray(R.array.ptBlocks);
+                int[] colorValues = res.getIntArray(R.array.ptBlockColors);
+                for (int i = 0; i < keys.length; i++) {
+                        COLOR_MAP.put(keys[i], colorValues[i]);
+                }
+        }
+
+        private static final HashMap<Integer, Cocktail> ID_MAP = new HashMap<>(COCKTAIL.length);
+
+        static {
+                for (int i = 0; i < COCKTAIL.length; i++) {
+                        ID_MAP.put(COCKTAIL[i].id, COCKTAIL[i]);
+                }
+        }
+        @Nullable
+        public static Cocktail getCocktail(int number) {
+                if (number < 1 || number > COCKTAIL.length) {
+                        return null;
+                }
+                return COCKTAIL[number - 1];
+        }
+        public static Cocktail getCocktailById(int number){
+                for(int i=0; i< COCKTAIL.length; i++){
+
+                        if(COCKTAIL[i].id == number)
+                                return COCKTAIL[i];
+
+                }
+                return null;
+        }
+        public static int getImageCocktail(Cocktail cocktail){
+
+                if(cocktail.category == "Alcolico")
+                        return R.drawable.Alcolico;
+                if(cocktail.category == "Analcolico")
+                        return R.drawable.Analcolico;
+
+                return 0;
+        }
+        @NonNull
+        public static Cocktail[] getCocktail() {
+                return COCKTAIL.clone();
+        }
+
+        public static int getNumeroCocktail() {
+                return COCKTAIL.length;
+        }
+
+        public static int getCocktailName(int number) {
+                if (number > COCKTAIL_NAMES.length) {
+                        return R.string.sconosciuto;
+                }
+
+                return COCKTAIL_NAMES[number - 1];
+        }
+        public static Cocktail[] getListaAlcolici()
+        {
+                Cocktail[] Alcolici =new Cocktail[42];
+                int i=0;
+                for(Cocktail e : Menu.getCocktail()){
+                        if(i==42)
+                                break;
+                        Alcolici[i]=new Cocktail(e.id,e.nome,e.number,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
+
+                        i++;
+
+                }
+
+
+                return Alcolici;
+        }
+
+
+        public static Cocktail[] getListaAnalcolici()
+        {
+                Cocktail[] Alcolici=new Cocktail[19];
+                int i=0;
+                int j=0;
+                for(Cocktail e : Menu.getCocktail()){
+
+                        if(j<42){
+                                j++;
+                                continue;}
+
+                        if(i==19)
+                                break;
+                        Alcolici[i]=new Cocktail(e.id,e.nome,e.number,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
+
+                        i++;
+
+                }
+
+
+                return Alcolici;
+        }
+
 }
 
