@@ -1045,7 +1045,7 @@ public class Menu {
                 for(Cocktail e : Menu.getCocktail()){
                         if(i==42)
                                 break;
-                        Alcolici[i]=new Cocktail(e.id,e.nome,e.number,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
+                        Alcolici[i]=new Cocktail(e.id,e.nome,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
 
                         i++;
 
@@ -1069,7 +1069,7 @@ public class Menu {
 
                         if(i==19)
                                 break;
-                        Alcolici[i]=new Cocktail(e.id,e.nome,e.number,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
+                        Alcolici[i]=new Cocktail(e.id,e.nome,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
 
                         i++;
 
