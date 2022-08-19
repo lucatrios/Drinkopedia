@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Progetto_OOP</string>
     <string name="sconosciuto">sconosciuto</string>
+
+    <string name="labelType">Cocktail</string>
+    <string name="labelDifficulty">Difficoltà</string>
+    <string name="labelTime">Tempo</string>
+    <string name="labelIngredients">Ingredienti</string>
 </resources>

@@ -100,6 +100,7 @@ public class ListaElementiFragment extends Fragment {
                     gestoreLista.setOrdina_Analcolici(false);//se sono in un altro bottone non ordinare gli analcolici
                 }
                 if(salvati){
+                    gestoreLista.setDb(db);
                     gestoreLista.setOrdina_Preferiti(true);
                 }
                 else{
@@ -108,7 +109,6 @@ public class ListaElementiFragment extends Fragment {
 
 
                 lista_elementi.setAdapter(gestoreLista);
-                gestoreLista.setDb(db);
             }
 
             @Override

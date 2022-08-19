@@ -977,6 +977,8 @@ public class Menu {
                 ),
 
         };
+
+
         @NonNull
         private final static HashMap<String, Integer> COLOR_MAP = new HashMap<>();
 
@@ -997,6 +999,7 @@ public class Menu {
                         ID_MAP.put(COCKTAIL[i].id, COCKTAIL[i]);
                 }
         }
+
         @Nullable
         public static Cocktail getCocktail(int number) {
                 if (number < 1 || number > COCKTAIL.length) {
@@ -1004,6 +1007,7 @@ public class Menu {
                 }
                 return COCKTAIL[number - 1];
         }
+
         public static Cocktail getCocktailById(int number){
                 for(int i=0; i< COCKTAIL.length; i++){
 
@@ -1022,8 +1026,9 @@ public class Menu {
 
                 return 0;
         }
+        /*controllo getCocktail perchè secondo me ci va un'altra classe*/
         @NonNull
-        public static Cocktail[] getCocktail() {
+        public static Cocktail[] getCocktails() {
                 return COCKTAIL.clone();
         }
 
@@ -1042,7 +1047,7 @@ public class Menu {
         {
                 Cocktail[] Alcolici =new Cocktail[42];
                 int i=0;
-                for(Cocktail e : Menu.getCocktail()){
+                for(Cocktail e : Menu.getCocktails()){
                         if(i==42)
                                 break;
                         Alcolici[i]=new Cocktail(e.id,e.nome,e.ingredients,e.difficulty,e.time,e.category,e.preparation,e.salvata);
@@ -1061,7 +1066,7 @@ public class Menu {
                 Cocktail[] Alcolici=new Cocktail[19];
                 int i=0;
                 int j=0;
-                for(Cocktail e : Menu.getCocktail()){
+                for(Cocktail e : Menu.getCocktails()){
 
                         if(j<42){
                                 j++;

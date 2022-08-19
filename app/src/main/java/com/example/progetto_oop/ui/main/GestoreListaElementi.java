@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.progetto_oop.R;
 import com.example.progetto_oop.modelli.Cocktail;
 import com.example.progetto_oop.modelli.Menu;
+import com.example.progetto_oop.ui.ingredients.ElementoActivity;
 
 
 public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaElementi.GestoreElemento> {
@@ -161,7 +162,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             if (!ordina_Alcolici && !ordina_Analcolici && !ordina_Preferiti) {
                 int count = 0;
-                for (Cocktail e : Menu.getCocktail()) {
+                for (Cocktail e : Menu.getCocktails()) {
                     String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
                     if (nome.contains(this.filtro_ricerca)) {
                         if (count == position)
@@ -185,7 +186,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
             holder.riga_elemento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(parent, ElmentoActivity.class);
+                    Intent intent = new Intent(parent, ElementoActivity.class);
 
                     intent.putExtra("numero", elemento.id);
                     intent.putExtra("salvato", elemento.salvata);
@@ -214,7 +215,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
 
             return Menu.getNumeroCocktail();
         }
-        //se stiamo cercando una ricetta cocktail
+        /*se stiamo cercando una ricetta cocktail*/
 
 
         if (Alcolici) {
@@ -270,7 +271,7 @@ public class GestoreListaElementi extends RecyclerView.Adapter<GestoreListaEleme
         }
 
         int count = 0;
-        for (Cocktail e : Menu.getCocktail()) {
+        for (Cocktail e : Menu.getCocktails()) {
             String nome = parent.getString(Menu.getCocktailName(e.id)).toLowerCase();
             if (nome.contains(this.filtro_ricerca)) {
                 count++;
