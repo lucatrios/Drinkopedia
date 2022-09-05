@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Progetto_OOP.iml" filepath="$PROJECT_DIR$/.idea/modules/Progetto_OOP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Progetto_OOP.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Progetto_OOP.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Drinkopedia.iml" filepath="$PROJECT_DIR$/.idea/modules/Drinkopedia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Drinkopedia.app.unitTest.iml" />
     </modules>
   </component>
 </project>

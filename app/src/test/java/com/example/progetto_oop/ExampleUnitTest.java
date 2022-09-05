@@ -1,4 +1,4 @@
-package com.example.progetto_oop;
+package com.example.progetto_OOP;
 
 import org.junit.Test;
 

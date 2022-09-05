@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">Progetto_OOP</string>
-    <string name="sconosciuto">sconosciuto</string>
-
+    <string name="app_name">Drinkopedia</string>
     <string name="labelType">Cocktail</string>
-    <string name="labelDifficulty">Difficoltà</string>
     <string name="labelTime">Tempo</string>
     <string name="labelIngredients">Ingredienti</string>
+    <string name="todo">TODO</string>
+    <string name="research_by_name">Cerca per nome</string>
+    <string name="alcoholics">Alcolici</string>
+    <string name="analcoholics">Analcolici</string>
+    <string name="preferred">Preferiti</string>
 </resources>

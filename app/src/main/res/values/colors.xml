@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="cardview_dark_background">#FF424242</color>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
+    <color name="material_dynamic_neutral60">#FF8F9193</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <style name="TableRow" />
+
+    <style name="TableRow.Odd">
+        <item name="android:background">#44888888</item>
+    </style>
+
+    <style name="CocktailDetails" parent="android:TextAppearance.Medium">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <style name="CocktailDetails.Label">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">right|end</item>
+    </style>
+
+    <style name="CocktailDetails.Value">
+        <item name="android:textIsSelectable">true</item>
+    </style>
 </resources>
