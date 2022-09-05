@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:context=".ui.element.CocktailActivity">
+
+
+        <include
+            android:id="@+id/row_cocktail_table"
+            layout="@layout/cocktail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/row_cocktail_table">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1"
+                    app:layout_constraintTop_toBottomOf="@+id/row_cocktail_table">
+
+                    <TableRow style="@style/TableRow.Odd">
+
+                        <TextView
+                            style="@style/CocktailDetails.Label"
+                            android:labelFor="@+id/Type"
+                            android:text="@string/labelType" />
+
+                        <TextView
+                            android:id="@+id/cocktail_value"
+                            style="@style/CocktailDetails.Value" />
+                    </TableRow>
+
+                    <TableRow style="@style/TableRow.Odd"/>
+
+                    <TableRow style="@style/TableRow">
+
+                        <TextView
+                            style="@style/CocktailDetails.Label"
+                            android:layout_height="match_parent"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/labelIngredients" />
+
+                        <TextView
+                            android:id="@+id/ingredients_value"
+                            style="@style/CocktailDetails.Value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </TableRow>
+
+                    <TableRow style="@style/TableRow.Odd">
+
+                        <TextView
+                            style="@style/CocktailDetails.Label"
+                            android:labelFor="@+id/Time"
+                            android:text="@string/labelTime" />
+
+                        <TextView
+                            android:id="@+id/time_value"
+                            style="@style/CocktailDetails.Value" />
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/preparation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+
+            android:textColor="#050404"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/saved"
+            android:layout_width="54dp"
+            android:layout_height="44dp"
+            app:layout_constraintBottom_toBottomOf="@+id/row_cocktail_table"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/row_cocktail_table"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@android:drawable/star_big_off"
+            android:contentDescription="@string/todo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

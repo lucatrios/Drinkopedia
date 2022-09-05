@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS COCKTAIL(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    ingredients TEXT NOT NULL,
+    time INTEGER NOT NULL,
+    category TEXT NOT NULL,
+    preparation TEXT NOT NULL,
+    saved INTEGER DEFAULT 0
+);
